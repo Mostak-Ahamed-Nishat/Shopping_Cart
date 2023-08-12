@@ -1,6 +1,8 @@
 import {
     ADD_CART,
-    ADD_PRODUCT
+    ADD_PRODUCT,
+    DECREMENT_PRODUCT,
+    INCREMENT_PRODUCT
 } from "./actionTypes"
 
 
@@ -16,5 +18,31 @@ export const addCart = (id) => {
     return {
         type: ADD_CART,
         payload: id
+    }
+}
+
+export const incrementProductQuantity = ({
+    id,
+    value
+}) => {
+    return {
+        type: INCREMENT_PRODUCT,
+        payload: {
+            id: id,
+            value: value
+        }
+    }
+}
+
+export const decrementProductQuantity = ({
+    id,
+    value
+}) => {
+    return {
+        type: DECREMENT_PRODUCT,
+        payload: {
+            id: id,
+            value: value
+        }
     }
 }
