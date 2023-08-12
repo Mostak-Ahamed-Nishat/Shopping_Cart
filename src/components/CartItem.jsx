@@ -1,6 +1,15 @@
+/* eslint-disable react/jsx-key */
+import { useSelector } from "react-redux";
+
 export default function CartItem() {
+
+  const cartItem=useSelector(state=>state.cart)
+
+  console.log(cartItem);
+
   return (
-    <div>
+    cartItem.map((item)=>(
+      <div>
       {/* Cart Item  */}
       <div className="cartCard">
         <div className="flex items-center col-span-6 space-x-6">
@@ -46,5 +55,6 @@ export default function CartItem() {
       </div>
       {/* Cart Items Ends */}
     </div>
+    ))
   );
 }

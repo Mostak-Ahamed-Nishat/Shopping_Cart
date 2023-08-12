@@ -1,7 +1,8 @@
 import {
     ADD_CART,
-    ADD_PRODUCT,
+    ADD_PRODUCT
 } from "./actionTypes"
+
 
 export const addProduct = (product) => {
     return {
@@ -10,17 +11,10 @@ export const addProduct = (product) => {
     }
 }
 
-export const removeProduct = (id) => {
-    return {
-        type: ADD_PRODUCT,
-        payload: id
-    }
-}
 
-
-export const addCart = (value) => {
+export const addCart = (id) => {
     return {
         type: ADD_CART,
-        payload: value
+        payload: id
     }
 }

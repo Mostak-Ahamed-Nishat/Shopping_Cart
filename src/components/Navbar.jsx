@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const cart = useSelector((state) => state.cart);
+
   return (
     <>
       {/* Navbar  */}
@@ -19,7 +22,7 @@ export default function Navbar() {
             </Link>
             <Link to="/cart" className="navCart" id="lws-cart">
               <i className="text-xl fa-sharp fa-solid fa-bag-shopping"></i>
-              <span id="lws-totalCart">0</span>
+              <span id="lws-totalCart">{cart.length}</span>
             </Link>
           </div>
         </div>
