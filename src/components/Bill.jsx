@@ -1,4 +1,12 @@
+import { useSelector } from "react-redux";
+
 export default function Bill() {
+  let cart = useSelector((state) => state.cart);
+  let netBill=0;
+  cart.map((item) => {
+    let bill = item.totalQuantity * item.price;
+    netBill += bill;
+  });
   return (
     <>
       <div className="billDetailsCard">
@@ -10,7 +18,7 @@ export default function Bill() {
           <div className="flex items-center justify-between">
             <p>Sub Total</p>
             <p>
-              BDT <span className="lws-subtotal">8800</span>
+              BDT <span className="lws-subtotal">{netBill}</span>
             </p>
           </div>
           {/* Discount  */}
@@ -31,7 +39,7 @@ export default function Bill() {
           <div className="flex items-center justify-between pb-4">
             <p className="font-bold">TOTAL</p>
             <p className="font-bold">
-              BDT <span className="lws-total">8800</span>
+              BDT <span className="lws-total">{netBill}</span>
             </p>
           </div>
           <button className="placeOrderbtn">place order</button>

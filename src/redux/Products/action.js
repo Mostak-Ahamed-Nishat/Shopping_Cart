@@ -2,7 +2,8 @@ import {
     ADD_CART,
     ADD_PRODUCT,
     DECREMENT_PRODUCT,
-    INCREMENT_PRODUCT
+    INCREMENT_PRODUCT,
+    REMOVE_ITEM
 } from "./actionTypes"
 
 
@@ -44,5 +45,12 @@ export const decrementProductQuantity = ({
             id: id,
             value: value
         }
+    }
+}
+
+export const removeItemFormCart = (id) => {
+    return {
+        type: REMOVE_ITEM,
+        payload: id
     }
 }

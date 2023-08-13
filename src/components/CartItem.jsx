@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   decrementProductQuantity,
   incrementProductQuantity,
+  removeItemFormCart,
 } from "../redux/Products/action";
 
 export default function CartItem() {
@@ -19,6 +20,12 @@ export default function CartItem() {
   const onClickDecrement = (e, id, value) => {
     e.preventDefault();
     dispatch(decrementProductQuantity({ id, value }));
+  };
+
+  const onClickRemoveHandler = (e, id) => {
+    console.log("CLicking");
+    e.preventDefault();
+    dispatch(removeItemFormCart(id));
   };
 
   return cartItem.map((item, index) => {
@@ -59,13 +66,19 @@ export default function CartItem() {
               </div>
               {/* price */}
               <p className="text-lg font-bold">
-                BDT <span className="lws-calculatedPrice">2200</span>
+                BDT{" "}
+                <span className="lws-calculatedPrice">
+                  {item.totalQuantity * item.price}
+                </span>
               </p>
             </div>
             {/* delete button */}
             <div className="flex items-center justify-center col-span-2 mt-4 md:justify-end md:mt-0">
               <button className="lws-removeFromCart">
-                <i className="text-lg text-red-400 fa-solid fa-trash"></i>
+                <i
+                  className="text-lg text-red-400 fa-solid fa-trash"
+                  onClick={(e) => onClickRemoveHandler(e, item.id)}
+                ></i>
               </button>
             </div>
           </div>
